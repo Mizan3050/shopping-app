@@ -1,9 +1,8 @@
 <app-categories></app-categories>
 
 <div class="product-list">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+    <ng-container *ngFor="let product of ListOfProducts?.products">
+        <app-product-card [product]="product"></app-product-card>
+    </ng-container>
 </div>
 
