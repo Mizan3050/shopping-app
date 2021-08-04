@@ -1,1 +1,19 @@
-<p>header works!</p>
+<p>
+  <mat-toolbar>
+    <span>My Shopping App</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+    <ng-container *ngIf="isLoggedIn; else logIn">
+      <button mat-raised-button color="warn" (click)="onLogOut()">Log out</button>
+    </ng-container>
+    <ng-template #logIn>
+      <button mat-raised-button routerLink="login" color="primary">Login</button>
+    </ng-template>
+  </mat-toolbar>
+</p>

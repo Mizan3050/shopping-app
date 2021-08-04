@@ -1,1 +1,29 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        required
+        autocomplete="off"
+      />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input autocomplete="off" matInput [type]="hide ? 'password' : 'text'" [formControl]="password" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="login()">Login</button>
+</div>
