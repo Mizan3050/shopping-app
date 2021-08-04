@@ -1,12 +1,12 @@
 .sidenav {
-    width: 230px;
+    width: 130px;
     height: 100%;
     position: fixed;
     z-index: 1;
-    top: 64px;
+    top: 0;
     background: #eee;
     overflow-x: hidden;
-    padding: 50px 0;
+    padding: 250px 0;
     display: flex;
     flex-direction: column;
   }
@@ -25,6 +25,6 @@
   
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px; top: 56px;}
+    .sidenav { width: 130px; padding: 200px;}
     .sidenav a {font-size: 18px;}
   }

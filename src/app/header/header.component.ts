@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { loginInput } from '../model/loginInput.interface';
 import { AppAuthService } from '../services/app-auth.service';
 
 @Component({
@@ -9,12 +10,17 @@ import { AppAuthService } from '../services/app-auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AppAuthService, private route: Router) { }
+  constructor(private authService: AppAuthService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
   isLoggedIn: boolean = false;
-  currentEmployee: string = '';
+  routerLink = '';
+  currentUser: loginInput = {
+
+  };
+
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe(data => this.isLoggedIn = data);
+    this.authService.getCurrentUser$.subscribe(user => this.currentUser = user);
   }
 
   onLogOut() {
