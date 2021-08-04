@@ -9,3 +9,24 @@
 .example-icon {
   margin-right: 27px;
 }
+
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 300px;
+}
+
+.username {
+  margin-top: 8px;
+  margin-right: 10px;
+}

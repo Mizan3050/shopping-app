@@ -1,19 +1,22 @@
 <p>
-  <mat-toolbar>
+  <mat-toolbar class="app-toolbar">
     <span>My Shopping App</span>
     <span class="example-spacer"></span>
-    <button
+    <div class="action-buttons">
+      <button
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with share icon"
     >
       <mat-icon>share</mat-icon>
     </button>
-    <ng-container *ngIf="isLoggedIn; else logIn">
+    <p class="username">{{currentUser?.username | titlecase}}</p>
+    <ng-container *ngIf="isLoggedIn ; else logIn">
       <button mat-raised-button color="warn" (click)="onLogOut()">Log out</button>
     </ng-container>
     <ng-template #logIn>
       <button mat-raised-button routerLink="login" color="primary">Login</button>
     </ng-template>
+    </div>
   </mat-toolbar>
 </p>

@@ -10,7 +10,7 @@ import { AppAuthService } from '../services/app-auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
   isLoggedIn = false;
@@ -26,17 +26,18 @@ export class LoginComponent implements OnInit {
     }
   }
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.username.hasError('required')) {
       return 'You must enter a value';
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return;
   }
 
   login() {
-    this.authService.logIn({username: this.email.value, password: this.password.value});
-    if (this.authService.loggedIn) {
-      this.route.navigate(['/']);
+    if(this.username.valid && this.password.valid) {
+      this.authService.logIn({ username: this.username.value, password: this.password.value });
+      if (this.authService.loggedIn) {
+        this.route.navigate(['/']);
+      }
     }
   }
 
