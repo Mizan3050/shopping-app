@@ -20,7 +20,7 @@
 .action-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   height: 100%;
   width: 300px;
@@ -29,4 +29,12 @@
 .username {
   margin-top: 8px;
   margin-right: 10px;
+}
+
+.mat-icon {
+  font-size: 40px;
+}
+
+.mat-icon:hover {
+  color: rgb(34, 108, 172)
 }
