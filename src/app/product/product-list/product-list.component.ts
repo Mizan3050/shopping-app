@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { Product, ProductList } from 'src/app/model/product.interface';
 import { ListOfProducts } from 'src/data/product-data';
 import { takeUntil } from 'rxjs/operators';
+import { CartRepositoryService } from 'src/app/services/cart-repository.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   filteredProductList: Product[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService) { }
 
   ngOnInit(): void {
     let categoryType: string;
@@ -31,6 +32,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.filteredProductList = this.listOfProducts?.products;
       }
     });
+  }
+
+  addToCart(id: string) {
+    this.cartRepositoryService.addProductToCart(id);
   }
 
   ngOnDestroy() {

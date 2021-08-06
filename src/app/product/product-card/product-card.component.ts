@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Product } from 'src/app/model/product.interface';
 import { CartRepositoryService } from 'src/app/services/cart-repository.service';
 
@@ -12,13 +12,15 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product: Product;
 
-  constructor(private cartRepositoryService: CartRepositoryService) { }
+  @Output() addToProduct$ = new EventEmitter<string>();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   addToCart(id: string) {
-    this.cartRepositoryService.addProductToCart(id);
+    this.addToProduct$.emit(id);
   }
 
 }

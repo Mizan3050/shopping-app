@@ -3,13 +3,14 @@
   <div class="title">Shopping Bag</div>
 
   <!-- Product #1 -->
-  <div class="item">
+  <div class="item" *ngFor="let product of productsInCart">
     <div class="buttons">
         <button
         mat-icon-button
         class="example-icon"
         aria-label="Example icon-button with share icon"
         [disableRipple]="'true'"
+        (click)="deleteProductFromCart()"
       >
       <mat-icon>delete_sweep</mat-icon>
       </button>
@@ -17,13 +18,12 @@
     </div>
 
     <div class="image">
-      <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="" />
+      <img [src]="product?.imageUrl" [alt]="product?.name" />
     </div>
 
     <div class="description">
-      <span>Common Projects</span>
-      <span>Bball High</span>
-      <span>White</span>
+      <span>{{product?.name}}</span>
+      <span>{{product?.category | titlecase}}</span>
     </div>
 
     <div class="quantity">
@@ -44,8 +44,7 @@
       >
         <mat-icon>remove_circle_outline</mat-icon>
       </button>
+      <div class="total-price">{{product?.price}}₹</div>
     </div>
-
-    <div class="total-price">$549</div>
   </div>
 </div>
