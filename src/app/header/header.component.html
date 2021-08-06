@@ -13,9 +13,11 @@
       </button>
       <button
         mat-icon-button
+        [matBadge]="cartProductsNumber$ | async" matBadgePosition="before" matBadgeColor="primary"
         class="example-icon"
         aria-label="Example icon-button with share icon"
         [disableRipple]="'true'"
+        (click)="openDialog()"
       >
       <mat-icon color="accent"> local_grocery_store</mat-icon>
       </button>

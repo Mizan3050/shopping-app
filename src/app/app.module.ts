@@ -12,11 +12,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { CartComponent } from './cart/cart.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule,
+    MatBadgeModule,
     ReactiveFormsModule,
     MatButtonModule,
     BrowserAnimationsModule,
