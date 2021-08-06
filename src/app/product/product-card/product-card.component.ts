@@ -14,7 +14,7 @@ export class ProductCardComponent implements OnInit {
 
   @Output() addToProduct$ = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private cartRepositoryService: CartRepositoryService) { }
 
   ngOnInit(): void {
   }

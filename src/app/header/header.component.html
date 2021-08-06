@@ -13,7 +13,7 @@
       </button>
       <button
         mat-icon-button
-        [matBadge]="cartProductsNumber$ | async" matBadgePosition="before" matBadgeColor="primary"
+        [matBadge]="(cartProductsNumber$ | async).length" matBadgePosition="before" matBadgeColor="primary"
         class="example-icon"
         aria-label="Example icon-button with share icon"
         [disableRipple]="'true'"

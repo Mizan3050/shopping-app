@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   routerLink = '';
-  cartProductsNumber$ = this.cartRepositoryService.productInCart$;
+  cartProductsNumber$ = this.cartRepositoryService.productsInCart$;
   currentUser: loginInput = {
 
   };

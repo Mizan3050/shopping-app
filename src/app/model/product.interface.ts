@@ -4,6 +4,7 @@ export interface Product {
     category?: string;
     imageUrl?: string;
     id: string;
+    quantity: number
 }
 
 export interface ProductList {
