@@ -1,5 +1,5 @@
 .example-card {
-    max-width: 400px;
+    width: 350px;
     margin-top: 40px;
   }
   
@@ -15,4 +15,10 @@
 
   h3{
     font-weight: bold;
+  }
+
+  img{
+    height: 250px;
+    width: 320px;
+    object-fit: contain;
   }
