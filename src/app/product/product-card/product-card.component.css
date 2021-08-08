@@ -37,3 +37,8 @@ img {
   text-decoration: underline;
   text-decoration-color: rgb(241, 123, 123);
 }
+
+@media screen and (max-width: 450px) {
+  img{ width: 100px; height: 70px;}
+  .example-card { margin-top: 5px;}
+}
