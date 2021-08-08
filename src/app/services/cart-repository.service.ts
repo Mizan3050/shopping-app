@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ListOfProducts } from 'src/data/product-data';
 import { Product, ProductList } from '../model/product.interface';
+import { Notification, NotificationService } from '../shared/notifications/notification.service';
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +21,10 @@ export class CartRepositoryService {
     public productAccordingToCategories = new BehaviorSubject<Product[]>([]);
     productAccordingToCategories$ = this.productAccordingToCategories.asObservable();
 
+    constructor(private notificationService: NotificationService) {
+
+    }
+
     addProductToCart(productId: string){
         const productToAdd = this.listOfProducts?.products.find(product => product?.id === productId);
         const currentProductInCart = this.cartProducts?.find(product => product?.id === productId);
@@ -28,6 +33,7 @@ export class CartRepositoryService {
             const { quantity, id, category, imageUrl, price, name } = productToAdd || {}
             this.cartProducts.push({quantity: quantity+1, id, category, imageUrl, price, name})
             this.productsInCart.next(this.cartProducts);
+            this.notificationService.showSuccess('Product added to Cart')
         } else {
             this.increaseProductQuantity(productId, true);
         }
@@ -46,6 +52,7 @@ export class CartRepositoryService {
         this.cartProducts = filteredArray;
         this.productsInCart.next(filteredArray);
         this.isProductPresentInCart(id);
+        this.notificationService.showSuccess('Product deleted from cart')
     }
 
     increaseProductQuantity(id: string, toIncrease: boolean) {
@@ -54,8 +61,10 @@ export class CartRepositoryService {
                 let updatedQty = product?.quantity;
                 if (toIncrease) {
                     updatedQty = product?.quantity + 1;
+                    this.notificationService.showSuccess('Product Count increased in the cart')
                 } else if((!toIncrease) && product?.quantity > 1) {
                     updatedQty = product?.quantity - 1;
+                    this.notificationService.showSuccess('Product Count decreased in the cart')
                 } else {
                     updatedQty = product?.quantity;
                 }

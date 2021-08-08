@@ -1,5 +1,5 @@
 .sidenav {
-    width: 130px;
+    width: 170px;
     height: 100%;
     position: fixed;
     z-index: 1;
@@ -24,7 +24,7 @@
   }
   
 
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 450px) {
     .sidenav { width: 130px; padding: 200px;}
     .sidenav a {font-size: 18px;}
   }
