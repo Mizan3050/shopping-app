@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product.interface';
 import { CartRepositoryService } from 'src/app/services/cart-repository.service';
+import { NotificationService } from '../shared/notifications/notification.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +15,9 @@ export class CheckoutComponent implements OnInit {
   productsInCart$: Observable<Product[]> = this.cartRepositoryService.productsInCart;
 
   constructor(
-    private cartRepositoryService: CartRepositoryService
+    private cartRepositoryService: CartRepositoryService,
+    private notificationService: NotificationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,11 @@ export class CheckoutComponent implements OnInit {
 
   decreaseQuantity(id: string) {
     this.cartRepositoryService.increaseProductQuantity(id, false);
+  }
+
+  payment() {
+    this.notificationService.showSuccess('Payment was done Successfully');
+    this.router.navigate(['/products'])
   }
 
 }

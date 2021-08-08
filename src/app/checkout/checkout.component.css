@@ -34,13 +34,22 @@
    
   .item {
     padding: 20px 30px;
-    height: 120px;
+    height: 180px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
+  .payment{
+    width: 250px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
    
-  .item:nth-child(3) {
+  .name {
+    width: 270px;
+  }
+  .item:nth-child(even) {
     border-top:  1px solid #E1E8EE;
     border-bottom:  1px solid #E1E8EE;
   }
@@ -75,8 +84,10 @@
    
   .description {
     padding-top: 10px;
+    margin-top: 30px;
     margin-right: 30px;
     width: 115px;
+    margin-bottom: 30px;
   }
    
   .description span {

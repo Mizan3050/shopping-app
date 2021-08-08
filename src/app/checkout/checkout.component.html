@@ -1,61 +1,55 @@
 <div class="shopping-cart">
-    <!-- Title -->
-    <div class="title">Shopping Bag</div>
-  
-    <ng-container *ngIf="productsInCart$ | async as productsInCart">
-      <ng-container *ngIf="productsInCart?.length; else elseTemplate">
-        <!-- Product #1 -->
-        <div class="item" *ngFor="let product of productsInCart">
-          <div class="buttons">
-            <button
-              mat-icon-button
-              class="example-icon"
-              aria-label="Example icon-button with share icon"
-              [disableRipple]="'true'"
-              (click)="deleteProductFromCart(product?.id)"
-            >
-              <mat-icon>delete_sweep</mat-icon>
-            </button>
-            <span class="like-btn"></span>
-          </div>
-  
-          <div class="image">
-            <img [src]="product?.imageUrl" [alt]="product?.name" />
-          </div>
-  
-          <div class="description">
-            <span>{{ product?.name | titlecase}}</span>
-            <span>{{ product?.category | titlecase }}</span>
-          </div>
-  
-          <!-- <div class="quantity">
-            <button
-              mat-icon-button
-              class="example-icon"
-              aria-label="Example icon-button with share icon"
-              [disableRipple]="'true'"
-              (click)="increaseQuantity(product?.id)"
-            >
-              <mat-icon>add_circle_outline</mat-icon>
-            </button>
-            <input type="text" name="name" [value]="product?.quantity" />
-            <button
-              mat-icon-button
-              class="example-icon"
-              aria-label="Example icon-button with share icon"
-              [disableRipple]="'true'"
-              (click)="decreaseQuantity(product?.id)"
-            >
-              <mat-icon>remove_circle_outline</mat-icon>
-            </button>
-            <div class="total-price">{{ product?.price }}₹</div>
-          </div> -->
+  <!-- Title -->
+  <div class="title">Shopping Bag</div>
+
+  <ng-container *ngIf="productsInCart$ | async as productsInCart">
+    <ng-container *ngIf="productsInCart?.length; else elseTemplate">
+      <!-- Product #1 -->
+      <div class="item" *ngFor="let product of productsInCart">
+        <div class="buttons">
+          <button
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with share icon"
+            [disableRipple]="'true'"
+            (click)="deleteProductFromCart(product?.id)"
+          >
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+          <span class="like-btn"></span>
         </div>
-      </ng-container>
-      <ng-template #elseTemplate>
-        <h3 style="text-align: center; font-size:x-large; font-weight: bold; margin-top: 50px;">
-          Your Cart is Empty
-        </h3>
-      </ng-template>
+
+        <div class="image">
+          <img [src]="product?.imageUrl" [alt]="product?.name" />
+        </div>
+
+        <div class="description">
+          <span class="name">{{ product?.name | titlecase }}</span>
+          <span>Category: {{ product?.category | titlecase }}</span>
+          <span>Price: {{ product?.price }}₹</span>
+          <span>Qty: {{ product?.quantity }}</span>
+        </div>
+      </div>
+      <button
+      class="payment"
+      mat-raised-button
+      color="primary"
+      (click)="payment()"
+    >
+     Proceed to payment
+    </button>
     </ng-container>
-  </div>
+    <ng-template #elseTemplate>
+      <h3
+        style="
+          text-align: center;
+          font-size: x-large;
+          font-weight: bold;
+          margin-top: 50px;
+        "
+      >
+        Your Cart is Empty
+      </h3>
+    </ng-template>
+  </ng-container>
+</div>

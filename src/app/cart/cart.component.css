@@ -33,13 +33,13 @@
    
   .item {
     padding: 20px 30px;
-    height: 120px;
+    height: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
    
-  .item:nth-child(3) {
+  .item:nth-child(even) {
     border-top:  1px solid #E1E8EE;
     border-bottom:  1px solid #E1E8EE;
   }
