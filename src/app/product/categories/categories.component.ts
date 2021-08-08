@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AppApiService } from 'src/app/services/app-api.service';
 import { Categories } from 'src/data/product-data';
 
 @Component({
@@ -13,15 +14,12 @@ export class CategoriesComponent implements OnInit {
 
   Categories = Categories;
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      bottom: 0,
-      fixed: false,
-      top: 0
-    });
+  constructor(fb: FormBuilder, private appApiService: AppApiService) {
+
   }
 
   ngOnInit(): void {
+    this.appApiService.footer.emit();
   }
 
 }

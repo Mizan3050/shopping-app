@@ -5,6 +5,7 @@ import { Product, ProductList } from 'src/app/model/product.interface';
 import { ListOfProducts } from 'src/data/product-data';
 import { takeUntil } from 'rxjs/operators';
 import { CartRepositoryService } from 'src/app/services/cart-repository.service';
+import { AppApiService } from 'src/app/services/app-api.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   filteredProductList$ = this.cartRepositoryService.productAccordingToCategories$;
 
-  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService) { }
+  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService, private appApiService: AppApiService) { }
 
   ngOnInit(): void {
     let categoryType: string;
@@ -32,6 +33,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.cartRepositoryService.productAccordingToCategories.next(this.listOfProducts?.products);
       }
     });
+    this.appApiService.footer.emit()
   }
 
   addToCart(id: string) {
