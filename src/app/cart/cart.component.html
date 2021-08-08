@@ -59,6 +59,6 @@
     </ng-template>
   </ng-container>
   <mat-dialog-actions align="end">
-    <button mat-stroked-button color="primary" mat-dialog-close [routerLink]="'/checkout'">Checkout</button>
+    <button mat-stroked-button color="primary" mat-dialog-close [routerLink]="'/checkout'" [disabled]="(productsInCart$ | async)?.length===0">Checkout</button>
   </mat-dialog-actions>
 </div>
