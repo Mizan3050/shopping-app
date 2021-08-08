@@ -13,6 +13,7 @@ import { NotificationService } from '../shared/notifications/notification.servic
 export class CheckoutComponent implements OnInit {
 
   productsInCart$: Observable<Product[]> = this.cartRepositoryService.productsInCart;
+  totalPrice = 0
 
   constructor(
     private cartRepositoryService: CartRepositoryService,
@@ -21,6 +22,11 @@ export class CheckoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.productsInCart$.subscribe(products=>{
+      products.forEach(product=>{
+        this.totalPrice = this.totalPrice + (product?.quantity*product?.price)
+      })
+    })
   }
 
   deleteProductFromCart(id: string) {
