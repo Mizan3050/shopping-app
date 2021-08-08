@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Categories } from 'src/data/product-data';
 
 @Component({
   selector: 'app-categories',
@@ -9,6 +10,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class CategoriesComponent implements OnInit {
 
   options: FormGroup;
+
+  Categories = Categories;
 
   constructor(fb: FormBuilder) {
     this.options = fb.group({

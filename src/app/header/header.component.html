@@ -4,19 +4,30 @@
     <span class="example-spacer"></span>
     <div class="action-buttons">
       <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
-    <p class="username">{{currentUser?.username | titlecase}}</p>
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        [disableRipple]="'true'"
+      >
+        <mat-icon [color]="'primary'">account_circle</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        [matBadge]="(cartProductsNumber$ | async).length" matBadgePosition="before" matBadgeColor="primary"
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+        [disableRipple]="'true'"
+        (click)="openDialog()"
+      >
+      <mat-icon color="accent"> local_grocery_store</mat-icon>
+      </button>
+      <!-- <p class="username">{{currentUser?.username | titlecase}}</p>
     <ng-container *ngIf="isLoggedIn ; else logIn">
       <button mat-raised-button color="warn" (click)="onLogOut()">Log out</button>
     </ng-container>
     <ng-template #logIn>
       <button mat-raised-button routerLink="login" color="primary">Login</button>
-    </ng-template>
+    </ng-template> -->
     </div>
   </mat-toolbar>
 </p>

@@ -1,20 +1,31 @@
 <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Cannon 1200D</mat-card-title>
-      <mat-card-subtitle>43000 Rs</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <!-- <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content> -->
-    <mat-card-actions>
-      <button mat-raised-button color="primary">Add to Cart</button>
-      <button mat-raised-button color="primary">Add to Bucket list</button>
-    </mat-card-actions>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>{{ product?.name }}</mat-card-title>
+    <mat-card-subtitle style="font-weight: bold"
+      >{{ product?.price }}₹</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img mat-card-image [src]="product?.imageUrl" alt="Photo of a Shiba Inu" />
+  <mat-card-content>
+    <h3>Category: {{ product?.quantity }}</h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-container *ngIf="true; else checkOut">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addToCart(product?.id)"
+      >
+        Add to Cart
+      </button>
+    </ng-container>
+    <ng-template #checkOut> 
+      <button
+      mat-raised-button
+      color="primary"
+    >
+      Checkout
+    </button>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>
