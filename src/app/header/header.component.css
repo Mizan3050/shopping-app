@@ -1,0 +1,40 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.example-icon {
+  margin-left: 20px;
+}
+
+.example-icon {
+  margin-right: 27px;
+}
+
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 300px;
+}
+
+.username {
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+.mat-icon {
+  font-size: 40px;
+}
+
+.mat-icon:hover {
+  color: rgb(34, 108, 172)
+}

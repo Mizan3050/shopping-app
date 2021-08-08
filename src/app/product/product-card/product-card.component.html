@@ -1,0 +1,38 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title style="font-weight: 400; font-size: medium;">{{ product?.name }}</mat-card-title>
+    <mat-card-subtitle style="font-weight: bold;"
+      >Price: {{ product?.price }}₹</mat-card-subtitle
+    >
+  </mat-card-header>
+  <img mat-card-image [src]="product?.imageUrl" alt="Photo of a Shiba Inu" />
+  <mat-card-content>
+    <h3 class="category-link" [routerLink]="'/products/'+product?.category">Category: {{ product?.category | titlecase}}</h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-container *ngIf="true; else checkOut">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addToCart(product?.id)"
+      >
+        Add to Cart
+      </button>
+      <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/products/'+product?.id+'/detail']"
+    >
+      View
+    </button>
+    </ng-container>
+    <ng-template #checkOut> 
+      <button
+      mat-raised-button
+      color="primary"
+    >
+      Checkout
+    </button>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>

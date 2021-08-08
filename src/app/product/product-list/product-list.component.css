@@ -1,0 +1,10 @@
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 150px;
+    right: 20px;
+    margin-top: 27px;
+}

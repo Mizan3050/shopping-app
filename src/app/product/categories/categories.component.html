@@ -1,0 +1,5 @@
+<div class="sidenav">
+  <ng-container *ngFor="let category of Categories">
+    <a [routerLink]="'/products/' + category">{{category | titlecase}}</a>
+  </ng-container>
+</div>

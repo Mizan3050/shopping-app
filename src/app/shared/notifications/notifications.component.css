@@ -1,0 +1,18 @@
+.notification {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgb(161, 255, 161);
+    position: fixed;
+    right: 0;
+    margin-right: 20px;
+    z-index: 1000;
+}
+
+p {
+    color: green; 
+    font-weight: 400;
+    margin-top: 4px;
+    margin-left: 20px;
+}

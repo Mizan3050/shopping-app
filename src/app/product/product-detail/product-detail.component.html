@@ -1,0 +1,18 @@
+<div class="detail">
+  <div class="product-image">
+    <img [src]="productDetail?.imageUrl" />
+  </div>
+  <div class="description">
+    <p>{{ productDetail?.name }}</p>
+    <p>Price: {{ productDetail?.price }}₹</p>
+    <p>Category: {{ productDetail?.category }}</p>
+    <p class="desc-text">Description: {{ productDetail?.description }}</p>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToCart(productDetail?.id)"
+    >
+      Add to Cart
+    </button>
+  </div>
+</div>
