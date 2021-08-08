@@ -7,7 +7,7 @@
   </mat-card-header>
   <img mat-card-image [src]="product?.imageUrl" alt="Photo of a Shiba Inu" />
   <mat-card-content>
-    <h3>Category: {{ product?.category | titlecase }}</h3>
+    <h3>Category: {{ product?.quantity }}</h3>
   </mat-card-content>
   <mat-card-actions>
     <ng-container *ngIf="true; else checkOut">

@@ -24,11 +24,11 @@ export class CartComponent implements OnInit {
   }
 
   increaseQuantity(id: string) {
-    
+    this.cartRepositoryService.increaseProductQuantity(id, true);
   }
 
   decreaseQuantity(id: string) {
-
+    this.cartRepositoryService.increaseProductQuantity(id, false);
   }
 
 }

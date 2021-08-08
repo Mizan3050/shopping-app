@@ -17,11 +17,20 @@ export class CartRepositoryService {
     public isProductInCart = new BehaviorSubject<boolean>(false);
     isProductInCart$ = this.isProductInCart.asObservable();
 
+    public productAccordingToCategories = new BehaviorSubject<Product[]>([]);
+    productAccordingToCategories$ = this.productAccordingToCategories.asObservable();
+
     addProductToCart(productId: string){
         const productToAdd = this.listOfProducts?.products.find(product => product?.id === productId);
-        const { quantity, id, category, imageUrl, price } = productToAdd || {}
-        this.cartProducts.push({quantity: quantity+1, id, category, imageUrl, price})
-        this.productsInCart.next(this.cartProducts);
+        const currentProductInCart = this.cartProducts?.find(product => product?.id === productId);
+
+        if(!currentProductInCart?.quantity){
+            const { quantity, id, category, imageUrl, price, name } = productToAdd || {}
+            this.cartProducts.push({quantity: quantity+1, id, category, imageUrl, price, name})
+            this.productsInCart.next(this.cartProducts);
+        } else {
+            this.increaseProductQuantity(productId, true);
+        }
     }
 
     isProductPresentInCart(id: string){
@@ -39,4 +48,30 @@ export class CartRepositoryService {
         this.isProductPresentInCart(id);
     }
 
+    increaseProductQuantity(id: string, toIncrease: boolean) {
+       const updatedCartAfterIncrement = this.cartProducts.map((product) => {
+            if(product?.id === id) {
+                let updatedQty = product?.quantity;
+                if (toIncrease) {
+                    updatedQty = product?.quantity + 1;
+                } else if((!toIncrease) && product?.quantity > 1) {
+                    updatedQty = product?.quantity - 1;
+                } else {
+                    updatedQty = product?.quantity;
+                }
+                const updatedProductInCart: Product = {
+                    quantity: updatedQty,
+                    id,
+                    imageUrl: product?.imageUrl,
+                    price: product?.price,
+                    category: product?.category,
+                    name: product?.name
+                }
+                return updatedProductInCart;
+            } else return product;
+        })
+        this.cartProducts = updatedCartAfterIncrement;
+        this.productsInCart.next(updatedCartAfterIncrement);
+    }
+ 
 }

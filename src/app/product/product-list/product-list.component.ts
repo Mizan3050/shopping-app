@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   listOfProducts: ProductList = ListOfProducts;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  filteredProductList: Product[];
+  filteredProductList$ = this.cartRepositoryService.productAccordingToCategories$;
 
   constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService) { }
 
@@ -27,9 +27,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
     ).subscribe(params => {
       categoryType = params?.category;
       if(categoryType) {
-        this.filteredProductList = this.listOfProducts?.products.filter(product => product.category === categoryType);
+        this.cartRepositoryService.productAccordingToCategories.next(this.listOfProducts?.products.filter(product => product.category === categoryType));
       } else {
-        this.filteredProductList = this.listOfProducts?.products;
+        this.cartRepositoryService.productAccordingToCategories.next(this.listOfProducts?.products);
       }
     });
   }
