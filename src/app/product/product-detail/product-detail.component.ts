@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Product, ProductList } from 'src/app/model/product.interface';
+import { CartRepositoryService } from 'src/app/services/cart-repository.service';
 import { ListOfProducts } from 'src/data/product-data';
 
 @Component({
@@ -17,7 +18,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService) { }
 
   ngOnInit(): void {
     this.route.params.pipe(
@@ -26,6 +27,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       const productId = params?.productId;
       this.productDetail = this.listOfProducts.products.find(product => product.id === productId);
     });
+  }
+
+  addToCart(id: string) {
+    this.cartRepositoryService.addProductToCart(id);
   }
 
   ngOnDestroy() {
