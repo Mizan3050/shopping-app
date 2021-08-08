@@ -15,12 +15,14 @@ import { MatInputModule } from '@angular/material/input';
 import { CartComponent } from './cart/cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
