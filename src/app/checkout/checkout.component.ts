@@ -37,7 +37,9 @@ export class CheckoutComponent implements OnInit {
 
   payment() {
     this.notificationService.showSuccess('Payment was done Successfully');
-    this.router.navigate(['/products'])
+    setTimeout(()=> {
+      this.router.navigate(['/products'])
+    }, 1000)
   }
 
 }
