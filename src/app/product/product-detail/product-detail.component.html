@@ -1,1 +1,11 @@
-<p>product-detail works!</p>
+<div class="detail">
+    <div class="product-image">
+        <img [src]="productDetail?.imageUrl">
+    </div>
+    <div class="description">
+        <p>{{productDetail?.name}}</p>
+        <p>{{productDetail?.price}}</p>
+        <p>{{productDetail?.category}}</p>
+        <p>details</p>
+    </div>
+</div>

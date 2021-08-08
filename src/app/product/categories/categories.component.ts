@@ -19,7 +19,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appApiService.footer.emit();
   }
 
 }

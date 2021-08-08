@@ -18,6 +18,13 @@
       >
         Add to Cart
       </button>
+      <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/products/'+product?.id+'/detail']"
+    >
+      View
+    </button>
     </ng-container>
     <ng-template #checkOut> 
       <button

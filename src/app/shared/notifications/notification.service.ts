@@ -19,7 +19,7 @@ export class NotificationService {
 
   showSuccess(message: string) {
     this.snackBar.open(message,'', {
-      duration: 2000,
+      duration: 1200,
       horizontalPosition: 'right',
       verticalPosition: 'top',
       panelClass: 'snackbar_success'

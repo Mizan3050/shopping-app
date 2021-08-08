@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   filteredProductList$ = this.cartRepositoryService.productAccordingToCategories$;
 
-  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService, private appApiService: AppApiService) { }
+  constructor(private route: ActivatedRoute, private cartRepositoryService: CartRepositoryService) { }
 
   ngOnInit(): void {
     let categoryType: string;
@@ -33,7 +33,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.cartRepositoryService.productAccordingToCategories.next(this.listOfProducts?.products);
       }
     });
-    this.appApiService.footer.emit()
   }
 
   addToCart(id: string) {
