@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { loginInput } from '../model/loginInput.interface';
+import { PlatformService } from 'src/app/services/platform.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,13 @@ export class AppAuthService {
 
     getCurrentUser = new BehaviorSubject<loginInput>(this.currentUser);
     getCurrentUser$ = this.getCurrentUser.asObservable();
+    isBrowser = false;
+
+    constructor(
+        private platformService: PlatformService
+    ) {
+        this.isBrowser = this.platformService.isBrowser();
+    }
 
     logOut() {
         localStorage.removeItem('currentEmployee');
@@ -33,12 +41,14 @@ export class AppAuthService {
     }
     //checks if user is logged in
     isAuthenticated() {
-        this.currentUser = JSON.parse(localStorage.getItem('currentEmployee') || '{}');
-        if (this.currentUser === {}) {
-            return this.loggedIn = false
-        } else {
-            return this.loggedIn = true;
-        }
+        if (this.isBrowser) {
+            this.currentUser = JSON.parse(localStorage.getItem('currentEmployee') || '{}');
+            if (this.currentUser === {} as any) {
+                return this.loggedIn = false;
+            } else {
+                return this.loggedIn = true;
+            }
+        } return false;
     }
 
 }
