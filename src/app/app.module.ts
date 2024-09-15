@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     CheckoutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     MatToolbarModule,
     MatInputModule,
