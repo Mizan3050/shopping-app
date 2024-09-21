@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { AppApiService } from 'src/app/services/app-api.service';
 import { Categories } from 'src/data/product-data';
 
@@ -10,11 +10,11 @@ import { Categories } from 'src/data/product-data';
 })
 export class CategoriesComponent implements OnInit {
 
-  options: FormGroup;
+  options: UntypedFormGroup;
 
   Categories = Categories;
 
-  constructor(fb: FormBuilder, private appApiService: AppApiService) {
+  constructor(fb: UntypedFormBuilder, private appApiService: AppApiService) {
 
   }
 

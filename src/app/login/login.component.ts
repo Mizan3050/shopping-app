@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppAuthService } from '../services/app-auth.service';
 
@@ -10,12 +10,12 @@ import { AppAuthService } from '../services/app-auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  username = new FormControl('', [Validators.required]);
-  password = new FormControl('', [Validators.required]);
+  username = new UntypedFormControl('', [Validators.required]);
+  password = new UntypedFormControl('', [Validators.required]);
 
   isLoggedIn = false;
   hide = true;
-  constructor(private fb: FormBuilder, private authService: AppAuthService, private route: Router) { }
+  constructor(private fb: UntypedFormBuilder, private authService: AppAuthService, private route: Router) { }
 
   ngOnInit(): void {
     if (this.authService.loggedIn) {
