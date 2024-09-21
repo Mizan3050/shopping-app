@@ -1,23 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-
+import { APP_ID, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { CartComponent } from './cart/cart.component';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,22 +24,21 @@ import { HttpClientModule } from '@angular/common/http';
     CheckoutComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     MatToolbarModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatDialogModule,
     MatBadgeModule,
     ReactiveFormsModule,
-    MatButtonModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatButtonModule,
     MatIconModule,
     SharedModule,
-    BrowserTransferStateModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_ID,  useValue: 'serverApp' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

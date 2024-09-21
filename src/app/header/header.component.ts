@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
 import { loginInput } from '../model/loginInput.interface';
 import { AppAuthService } from '../services/app-auth.service';
 import { CartRepositoryService } from '../services/cart-repository.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
